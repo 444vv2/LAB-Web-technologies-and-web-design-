@@ -8,10 +8,20 @@ body {
   }
 
 img {
-  width: 50%;
-  height: 598px;
+  /*width: 50%;
+  height: 598px;*/
   object-fit: contain;
   display: block;
+}
+
+.header_illustration {
+  width: 693px;
+  height: 598px;
+}
+
+.second_illustration {
+  width: 650px;
+  height: 467px;
 }
 
 .header {
