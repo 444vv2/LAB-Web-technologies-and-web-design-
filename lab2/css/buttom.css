@@ -1,0 +1,62 @@
+.consult_button {
+  display: inline-block;
+  position: relative;
+  outline: none;
+  font-weight: 700;
+  background: #4e6cfb;
+  border: none;
+  padding: 1px 60px;
+  border-radius: 55px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 60px;
+  letter-spacing: 0%;
+  cursor: pointer;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.consult_button span {
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.consult_button:hover span {
+    animation: jump 0.8s ease-in-out infinite;
+}
+
+.learn_more_button {
+  display: inline-block;
+  position: relative;
+  outline: none;
+  background: #fff;
+  border: 2px solid #458FF6;
+  padding: 1px 60px;
+  border-radius: 55px;
+  color: #458FF6;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 60px;
+  letter-spacing: 0%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.learn_more_button span {
+    display: inline-block;
+    transition: 0.3s ease;
+}
+.learn_more_button:hover span {
+  animation: jump 0.8s linear infinite;
+}
+
+.learn_more_button:hover {
+    color: #fff;
+    background-color: #458FF6;
+    transition: 0.3s linear;
+}
+
+.third_section .learn_more_button {
+  display: block;
+  margin: 60px auto 0;
+}
