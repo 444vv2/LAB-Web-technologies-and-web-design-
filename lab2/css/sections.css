@@ -1,0 +1,264 @@
+.first_section {
+  position: relative;
+  padding: 60px 80px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 40px;
+}
+
+.first_section h1 {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: 0%;
+  margin-bottom: 20px;
+}
+
+.first_section p {
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 32px;
+  letter-spacing: 0%;
+  max-width: 450px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.second_section {
+  padding: 60px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 40px;
+  flex-direction: row;
+}
+
+.second_illustration {
+  width: 650px;
+  height: 467px;
+}
+
+.second_section h2 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 56px;
+  letter-spacing: 0%;
+  margin-bottom: 15px;
+}
+
+.second_section p {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  color: #666;
+  margin-bottom: 25px;
+  max-width: 450px;
+}
+
+.third_section {
+  position: relative;
+  /* padding: 60px 80px; */
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px; 
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.service {
+  background: #fff;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: box-shadow 0.3s ease;
+}
+
+.service:hover {
+  animation: Move_top 2s ease-in-out infinite;
+  box-shadow: 0 8px 20px rgba(61, 143, 219, 0.514);
+}
+
+.service h3 {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 56px;
+  letter-spacing: 0%;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.service p {
+  color: #666;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0%;
+}
+
+.service .icon {
+  width: 92px;
+  height: 95px;
+}
+
+@media (max-width: 600px) {
+    .first_section, .second_section, .third_section {
+        padding: 30px 20px;
+    }
+
+    .second_illustration {
+      width: 100%;
+      height: auto;
+    }
+    
+    
+    .first_section, .second_section {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .first_section h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    
+    .first_section p, .second_section p {
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 100%;
+    }
+    
+    .second_section h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+    
+    .services {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .service {
+        max-width: 100%;
+        min-height: 250px;
+        padding: 25px 20px;
+    }
+    
+    .consult_button, .learn_more_button {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 16px;
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 1920px) {
+  .first_section, .second_section {
+    padding: 120px 200px;
+    gap: 80px;
+  }
+  .first_section h1 {
+    font-size: 64px;
+    line-height: 72px;
+  }
+  .second_section h2 {
+    font-size: 48px;
+    line-height: 60px;
+  }
+  .services {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (min-width: 2559px) {
+  .first_section, .second_section {
+    padding: 200px 200px;
+    gap: 50px;
+  }
+  .first_section h1 {
+    font-size: 80px;
+    line-height: 90px;
+  }
+
+  .first_section p {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 50px;
+    max-width: 600px;
+  }  
+
+  .consult_button span {
+    font-size: 40px;
+    padding: 20px 40px;
+  }
+
+  .second_illustration{
+    width: 1000px;
+    height: 100%;
+  }
+
+  .second_section h2 {
+    font-size: 60px;
+    line-height: 72px;
+  }
+
+  .second_section p {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 43px;
+    max-width: 800px;
+  }
+
+  .learn_more_button span {
+    font-size: 40px;
+    padding: 20px 40px;
+  }
+
+  .services {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 2200px;
+  }
+
+  .text3 h3 {
+    font-size: 55px;
+    line-height: 40px;
+  }
+
+  .text3 p {
+    font-size: 34px;
+    line-height: 41px;
+    width: 100%;
+  }
+
+  .service {
+    max-width: 520px;
+    padding: 30px 54px;
+  }
+
+  .service h3 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .service p {
+    font-size: 35px;
+    line-height: 40px;
+    font-weight: 400;
+  }
+
+  .service .icon {
+    width: 140px;
+    height: 140px;
+  }
+}
