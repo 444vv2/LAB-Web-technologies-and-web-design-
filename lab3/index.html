@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="header_id" class="header">
+        <h1 class="header_text">Cars</h1>
+        <img src="assets/car_img.png" class="car_img"> 
+    </header>
+    <div id="container_div_id" class="container">  
+        <article id="article_id" class="article">
+            <h2>Create card</h2>
+            <section id="section_info_id" class="section_info">
+                <h3>Input info about car</h3>
+
+                <label for="Input_brand" class="section_label_brand">Brand</label>
+                <input type="text" id="brand_input" class="input">
+
+                <label for="Input_max_speed" class="section_label_speed">Max speed</label>
+                <input type="text" id="speed_input" class="input"> 
+
+                <label for="Input_engine_power" class="section_label_engine">Engine power</label>
+                <input type="text" id="engine_power_input" class="input">
+
+                <button id="submit_button" type="submit" class="submit_button">
+                    Submit
+                </button>
+
+            </section>
+            <section id="section_search_id" class="section_search">
+                <h3>Search</h3>
+
+                <label for="search" class="section_label_search">Search by brand</label>
+                <input type="text" id="search_input" class="input">
+
+                <div id="search_buttons_id" class="search_buttons">
+                    <button id="find_button" class="find_button">Find</button>
+                    <button id="reset_button" class="reset_button">Reset</button>
+                </div>
+            </section>
+            <section id="section_sort_id" class="section_sort">
+                <h3>Sort</h3>
+
+                <div id="sort_buttons_id" class="sort_buttons">
+                    <button id="sort_by_speed_button" class="sort_by_speed_button">By max speed</button>
+                    <button id="sort_by_engine_power_button" class="sort_by_engine_power_button">By engine power</button>
+                </div>
+            </section>
+            <section id="section_count_id" class="section_count">
+                <h3>Count car</h3>
+                <div class="count_div" id="count_div_id">
+                    <button id="count_button" class="count_button">Count</button>
+                    <p id="info_text_id" class="info_text">Total cars: 0</p>
+                </div>    
+            </section>        
+        </article>
+
+        <aside id="aside_id" class="aside">
+            <ul id="items_container" class="item_list">
+            </ul>
+        </aside>
+    </div>  
+    <script type="module" src="js/index.js"></script>
+</body>
+</html>
