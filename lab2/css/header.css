@@ -34,8 +34,7 @@
   cursor: pointer;
 }
 
-.logo h2::before,
-.logo h2::after {
+.logo h2::before, .logo h2::after {
   content: "";
   position: absolute;
   top: -15px;
