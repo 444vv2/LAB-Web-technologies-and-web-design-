@@ -10,9 +10,9 @@ const itemTemplate = ({ id, brand, max_speed, engine_power}) => `
     <li id="${getItemId(id)}" class="item_list" draggable="true">
         <img src="assets/car_img.png" class="item_list_image" alt="Car">
         <div class="card_body">
-            <h5 class="card_brand">${brand}</h5>
-            <p class="card_max_speed">${max_speed}</p>
-            <p class="card_engine_power">${engine_power}</p>
+            <p><strong>Brand:</strong> ${brand}</p>
+            <p><strong>Max speed:</strong> ${max_speed}</p>
+            <p><strong>Engine power:</strong> ${engine_power}</p>
         </div>
         <div class="item_buttons">
             <button class="edit_button" id="edit_button_id">Edit</button>

@@ -49,8 +49,8 @@ findButton.addEventListener("click", () => {
 });
 
 resetButton.addEventListener("click", () => {
-    findInput.value = "";
     renderItemList(cars);
+    findInput.value = "";
 })
 
 sortBySpeedButton.addEventListener("click", () => {
