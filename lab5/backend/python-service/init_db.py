@@ -1,8 +1,7 @@
 import asyncio
 from sqlalchemy import text
 from database import engine, Base
-import models
-
+import models  # noqa: F401  # Імпортуємо для реєстрації моделей у Base.metadata
 
 async def init_models():
     async with engine.begin() as conn:

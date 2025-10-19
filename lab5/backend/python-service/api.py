@@ -8,10 +8,9 @@ from models import Car, CarAddModel, CarModel
 
 app = FastAPI()
 
-# CORS to allow frontend (served via local static server) to call the API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For local dev; tighten for production
+    allow_origins=["*"],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -31,7 +30,11 @@ async def get_cars(session: sessionDep):
 
 @app.post("/api/cars", response_model=CarModel)
 async def add_car(car: CarAddModel, session: sessionDep):
-    new_car = Car(**car.model_dump())
+    new_car = Car(
+        brand=car.brand,
+        max_speed=car.max_speed,
+        engine_power=car.engine_power
+)
     session.add(new_car)
     await session.commit()
     await session.refresh(new_car)
