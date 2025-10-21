@@ -1,0 +1,38 @@
+.bg_element1 {
+  position: absolute;
+  width: 937.96px;
+  height: 671.38px;
+  left: -256px;
+  top: 0px;
+  opacity: 0.6;
+  transform: rotate(21.46deg);
+  z-index: -1;
+}
+
+.dots_at_first_section {
+  position: absolute;
+  left: 2%;
+  top: 2.73%;
+  opacity: 0.7;
+  width: 131px;
+  height: 115px;
+}
+
+.dots1_at_footer {
+  position: absolute;
+  left: -1.19%;
+  top: -100px;
+  opacity: 0.7;
+  width: 150px;
+  height: 141px;
+}
+
+.dots2_at_footer {
+  position: absolute;
+  right: 5.71%;
+  opacity: 0.7;
+  width: 150px;
+  height: 141px;
+  bottom: 20px;
+  z-index: -1;
+}
