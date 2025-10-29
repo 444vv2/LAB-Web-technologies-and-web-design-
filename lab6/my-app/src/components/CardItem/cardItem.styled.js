@@ -40,6 +40,7 @@ export const CardTitle = styled.h3`
 
 export const CardFooter = styled.div`
     display: flex;
+    flex-direction: row;
     margin-top: 20px;
     justify-content: space-between;
     align-items: center;
@@ -74,4 +75,14 @@ export const CardButton = styled.button`
     &:active {
         transform: scale(0.98);
     }
+`;
+
+export const CardDescription = styled.p`
+    color: #cccccc;
+    font-size: 1rem;
+    margin-top: 10px;
+    line-height: 1.4;
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;

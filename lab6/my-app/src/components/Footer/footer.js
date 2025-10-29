@@ -1,10 +1,10 @@
 import React from "react";
-import Icon , { 
+import {
     TwitterOutlined,
     InstagramOutlined,
     LinkedinOutlined,
     YoutubeOutlined,
-  } from "@ant-design/icons";
+} from "@ant-design/icons";
 import {
     FooterContainer, 
     FooterContent,
@@ -14,7 +14,7 @@ import {
     FooterLogo,
     SocialIcons
 } from "./footer.styled.js";
-import HotWheelsLogo from "../../../Icons/hot_wheels_logo.png"; 
+import HotWheelsLogo from "../../Icons/hot_wheels_logo.png"; 
 
 const Footer = () => {
     return (

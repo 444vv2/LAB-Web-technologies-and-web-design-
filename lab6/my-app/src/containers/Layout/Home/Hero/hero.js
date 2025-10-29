@@ -1,15 +1,15 @@
 import React from "react";
 import {HeroContainer, HeroTitle, HeroSubtitle, LogosWrapper, LogoItem, LogoImage } from "./hero.styled.js";
-import HeroImg1 from "../../../Icons/hero_icons/bmw.png";
-import HeroImg2 from "../../../Icons/hero_icons/ferrari.png";
-import HeroImg3 from "../../../Icons/hero_icons/maserati.png";
-import HeroImg4 from "../../../Icons/hero_icons/mclaren.png";
-import HeroImg5 from "../../../Icons/hero_icons/lamborghini.png";
-import HeroImg6 from "../../../Icons/hero_icons/porshe.png";
-import HeroImg7 from "../../../Icons/hero_icons/jaguar.png";
-import HeroImg8 from "../../../Icons/hero_icons/audi.png";
-import HeroImg9 from "../../../Icons/hero_icons/chevrolet.png";
-import HeroImg10 from "../../../Icons/hero_icons/mazda.png";
+import HeroImg1 from "../../../../Icons/hero_icons/bmw.png";
+import HeroImg2 from "../../../../Icons/hero_icons/ferrari.png";
+import HeroImg3 from "../../../../Icons/hero_icons/maserati.png";
+import HeroImg4 from "../../../../Icons/hero_icons/mclaren.png";
+import HeroImg5 from "../../../../Icons/hero_icons/lamborghini.png";
+import HeroImg6 from "../../../../Icons/hero_icons/porshe.png";
+import HeroImg7 from "../../../../Icons/hero_icons/jaguar.png";
+import HeroImg8 from "../../../../Icons/hero_icons/audi.png";
+import HeroImg9 from "../../../../Icons/hero_icons/chevrolet.png";
+import HeroImg10 from "../../../../Icons/hero_icons/mazda.png";
 
 const Hero = () => {
     const carLogos = [

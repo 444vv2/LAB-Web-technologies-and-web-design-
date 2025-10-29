@@ -48,3 +48,19 @@ export const TopCardWrapper = styled.div`
     padding: 30px 0;
 `; 
 
+export const TopCardButton = styled.button`
+    background: linear-gradient(90deg, #ff6b35, #ffaa00);
+    color: #ffffff;
+    border: none;
+    border-radius: 24px;
+    margin-top: 30px;
+    padding: 20px 70px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+        background: linear-gradient(90deg, #ffaa00, #ff6b35);
+    }
+`;

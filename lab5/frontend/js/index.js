@@ -16,7 +16,7 @@ let currentEditId = null;
 const API_URL = "http://127.0.0.1:8001/api/cars";
 let cars = [];
 
-const generateId = () => Date.now().toString();
+// const generateId = () => Date.now().toString();
 
 const fetchCars = async () => {
     const res = await fetch(API_URL);

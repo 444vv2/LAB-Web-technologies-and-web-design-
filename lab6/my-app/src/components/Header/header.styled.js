@@ -64,4 +64,32 @@ export const NavItem = styled.nav`
     &:hover::after {
         width: 80%;
     }
+
+    & a {
+        text-decoration: none;
+        color: white;
+    }
+
+    & a.active {
+        color: #ff6b35;
+    }
+
+    & a:hover {
+        color: #ff6b35;
+    }
+`;
+
+export const HeaderSearch = styled.div`
+    position: relative;
+    & input {
+        padding: 15px 20px;
+        border-radius: 20px;
+        border: none;
+        width: 250px;
+        transition: width 0.3s ease;
+        &:focus {
+            width: 300px;
+            outline: none;
+        }
+    }
 `;
