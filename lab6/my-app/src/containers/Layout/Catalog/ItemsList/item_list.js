@@ -138,13 +138,13 @@ const ItemsList = () => {
     return (
         <ItemsListWrapper>
             <ItemsGrid>
-                {filtered.map(({ title, description, imageSrc, price }, index) => (
+                {filtered.map((item, index) => (
                         <CardItem
                             key={index}
-                            title={title}
-                            description={description}
-                            imageSrc={imageSrc}
-                            price={price}
+                            title={item.title}
+                            description={item.description}
+                            imageSrc={item.imageSrc}
+                            price={item.price}
                             index={index}
                         />
                     ))}

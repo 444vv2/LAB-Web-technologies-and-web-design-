@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { CardContainer, CardImage, CardTitle, CardFooter, CardPrice, CardButton} from "./cardItem.styled";
 
-const CardItem = ({ title, description, imageSrc, price }) => {
+const CardItem = ({ title, description, imageSrc, price, index }) => {
+    const navigate = useNavigate();
+
+    const handleViewMore = () => {
+        // Переходимо на сторінку товару з ID
+        navigate(`/catalog/${index}`);
+    };
+
     return (
         <CardContainer className="card-item">
             <CardImage src={imageSrc} alt={title} />
@@ -9,7 +17,7 @@ const CardItem = ({ title, description, imageSrc, price }) => {
             <p>{description}</p>
             <CardFooter>
               <CardPrice>Price: {price} $</CardPrice>
-              <CardButton>View more</CardButton>
+              <CardButton className="Button" onClick={handleViewMore}>View more</CardButton>
             </CardFooter>
         </CardContainer>
     );

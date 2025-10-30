@@ -7,6 +7,7 @@ import {
 import Home from "../Home";
 import Catalog from "../Catalog";
 import Header from "../../../components/Header/header";
+import ItemPage from "../ItemPage";
 
 const Navigation = () => {
     return (
@@ -16,6 +17,7 @@ const Navigation = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/catalog" element={<Catalog />} />
+                    <Route path="/catalog/:id" element={<ItemPage />} />
                     <Route path="/cart" element={<h2>Cart Page</h2>} />
                 </Routes>
             </div>
