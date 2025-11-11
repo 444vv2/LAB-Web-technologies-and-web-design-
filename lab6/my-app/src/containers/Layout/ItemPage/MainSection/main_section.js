@@ -27,6 +27,7 @@ import CarImg3 from "../../../../Icons/car3.png";
 // Дані товарів
 const data = [
     { 
+        id: 1,
         title: "Green Car 1",
         description: "This is a great green car with excellent features and performance.",
         imageSrc: CarImg1, 
@@ -36,6 +37,7 @@ const data = [
         type: "Solo_car"
     },
     { 
+        id: 2,
         title: "Red Car 2",
         description: "This is a stunning red car that offers a smooth ride and top-notch safety.",
         imageSrc: CarImg2, 
@@ -45,6 +47,7 @@ const data = [
         type: "Solo_car"
     },
     { 
+        id: 3,
         title: "Orange Car 3",
         description: "This is a vibransdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadaFIAdfhFHifhaHFIAhfihaFIHifhit orange car that combines style with cool performance.",
         imageSrc: CarImg3, 
@@ -59,7 +62,6 @@ const MainSection = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     
-    // Знаходимо товар за ID
     const itemIndex = parseInt(id) % data.length;
     const item = data[itemIndex];
     

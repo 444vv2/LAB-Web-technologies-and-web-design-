@@ -11,12 +11,13 @@ const Header = () => {
 
   const onChange = (e) => {
     const value = e.target.value;
+    const newParams = new URLSearchParams(searchParams);
     if (value) {
-      setSearchParams({ q: value });
+      newParams.set("q", value);
     } else {
-      searchParams.delete("q");
-      setSearchParams(searchParams, { replace: true });
+      newParams.delete("q");
     }
+    setSearchParams(newParams);
   };
 
   return (

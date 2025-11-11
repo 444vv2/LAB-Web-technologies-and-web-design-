@@ -6,7 +6,6 @@ const CardItem = ({ title, description, imageSrc, price, index }) => {
     const navigate = useNavigate();
 
     const handleViewMore = () => {
-        // Переходимо на сторінку товару з ID
         navigate(`/catalog/${index}`);
     };
 

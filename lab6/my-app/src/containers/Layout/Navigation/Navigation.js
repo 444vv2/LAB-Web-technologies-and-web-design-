@@ -12,7 +12,7 @@ import ItemPage from "../ItemPage";
 const Navigation = () => {
     return (
         <Router>
-            <div>
+            <>
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -20,7 +20,7 @@ const Navigation = () => {
                     <Route path="/catalog/:id" element={<ItemPage />} />
                     <Route path="/cart" element={<h2>Cart Page</h2>} />
                 </Routes>
-            </div>
+            </>
         </Router>
     );
 };

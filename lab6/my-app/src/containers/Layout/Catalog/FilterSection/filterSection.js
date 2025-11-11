@@ -11,14 +11,12 @@ import {
 const FilterSection = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     
-    // Локальний стан для фільтрів
     const [localFilters, setLocalFilters] = useState({
         filter1: "",
         filter2: "",
         filter3: ""
     });
-    
-    // Ініціалізувати локальні фільтри з URL при завантаженні
+
     useEffect(() => {
         setLocalFilters({
             filter1: searchParams.get("filter1") || "",
@@ -37,7 +35,6 @@ const FilterSection = () => {
     const applyAllFilters = () => {
         const newParams = new URLSearchParams(searchParams);
         
-        // Застосувати всі фільтри
         Object.entries(localFilters).forEach(([key, value]) => {
             if (value) {
                 newParams.set(key, value);

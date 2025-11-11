@@ -8,6 +8,7 @@ import { useSearchParams } from "react-router-dom";
 
 const data = [
     { 
+        id: 1,
         title: "Green Car 1",
         description: "This is a great green car with excellent features and performance.",
         imageSrc: CarImg1, 
@@ -17,6 +18,7 @@ const data = [
         type: "Solo_car"
     },
     { 
+        id: 2,
         title: "Red Car 2",
         description: "This is a stunning red car that offers a smooth ride and top-notch safety.",
         imageSrc: CarImg2, 
@@ -26,6 +28,7 @@ const data = [
         type: "Solo_car"
     },
     { 
+        id: 3,
         title: "Orange Car 3",
         description: "This is a vibrant orange car that combines style with cool performance.",
         imageSrc: CarImg3, 
@@ -35,6 +38,7 @@ const data = [
         type: "Set"
     },
     { 
+        id: 4,
         title: "Green Car 1",
         description: "This is a great green car with excellent features and performance.",
         imageSrc: CarImg1, 
@@ -44,6 +48,7 @@ const data = [
         type: "Solo_car"
     },
     { 
+        id: 5,
         title: "Red Car 2",
         description: "This is a stunning red car that offers a smooth ride and top-notch safety.",
         imageSrc: CarImg2, 
@@ -53,6 +58,7 @@ const data = [
         type: "Solo_car"
     },
     { 
+        id: 3,
         title: "Orange Car 3",
         description: "This is a vibrant orange car that combines style with cool performance.",
         imageSrc: CarImg3, 
@@ -62,6 +68,7 @@ const data = [
         type: "Set"
     },
     { 
+        id: 4,
         title: "Green Car 1",
         description: "This is a great green car with excellent features and performance.",
         imageSrc: CarImg1, 
@@ -71,6 +78,7 @@ const data = [
         type: "Solo_car"
     },
     { 
+        id: 5,
         title: "Red Car 2",
         description: "This is a stunning red car that offers a smooth ride and top-notch safety.",
         imageSrc: CarImg2, 
@@ -80,6 +88,7 @@ const data = [
         type: "Solo_car"
     },
     { 
+        id: 3,
         title: "Orange Car 3",
         description: "This is a vibrant orange car that combines style with cool performance.",
         imageSrc: CarImg3, 
@@ -89,12 +98,13 @@ const data = [
         type: "Set"
     },
     { 
+        id: 4,
         title: "Green Car 1",
         description: "This is a great green car with excellent features and performance.",
         imageSrc: CarImg1, 
-        price: "250",
+        price: "70",
         color: "green",
-        priceCategory: "About",
+        priceCategory: "Less",
         type: "Solo_car"
     }
 ];
@@ -121,13 +131,11 @@ const ItemsList = () => {
             if (filter1) {
                 result = result.filter(item => item.color === filter1);
             }
-            
-            // Apply filter 2 (price category)
+
             if (filter2) {
                 result = result.filter(item => item.priceCategory === filter2);
             }
-            
-            // Apply filter 3 (type)
+
             if (filter3) {
                 result = result.filter(item => item.type === filter3);
             }
@@ -138,14 +146,13 @@ const ItemsList = () => {
     return (
         <ItemsListWrapper>
             <ItemsGrid>
-                {filtered.map((item, index) => (
+                {filtered.map((item, id) => (
                         <CardItem
-                            key={index}
+                            key={item.id}
                             title={item.title}
                             description={item.description}
                             imageSrc={item.imageSrc}
                             price={item.price}
-                            index={index}
                         />
                     ))}
                 </ItemsGrid>
