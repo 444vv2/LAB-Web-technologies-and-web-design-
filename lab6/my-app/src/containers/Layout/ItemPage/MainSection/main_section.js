@@ -1,4 +1,6 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
+import axios from "axios";
+import { API_URL } from "../../../../constants/constants.js";
 import { useParams, useNavigate } from "react-router-dom";
 import {
     MainSectionContainer,
@@ -20,53 +22,38 @@ import {
     MainSectionButtonGoBack,
     MainSectionButtonAddToCart
 } from "./main_section.styled";
-import CarImg1 from "../../../../Icons/car1.png";
-import CarImg2 from "../../../../Icons/car2.png";
-import CarImg3 from "../../../../Icons/car3.png";
-
-// Дані товарів
-const data = [
-    { 
-        id: 1,
-        title: "Green Car 1",
-        description: "This is a great green car with excellent features and performance.",
-        imageSrc: CarImg1, 
-        price: "250",
-        color: "green",
-        priceCategory: "About",
-        type: "Solo_car"
-    },
-    { 
-        id: 2,
-        title: "Red Car 2",
-        description: "This is a stunning red car that offers a smooth ride and top-notch safety.",
-        imageSrc: CarImg2, 
-        price: "100",
-        color: "red",
-        priceCategory: "About",
-        type: "Solo_car"
-    },
-    { 
-        id: 3,
-        title: "Orange Car 3",
-        description: "This is a vibransdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadaFIAdfhFHifhaHFIAhfihaFIHifhit orange car that combines style with cool performance.",
-        imageSrc: CarImg3, 
-        price: "320",
-        color: "orange",
-        priceCategory: "About",
-        type: "Set"
-    }
-];
+import { getCarImage } from "../../../../utils/imageUtils.js";
+import LoadingSpinner from "../../../../components/Loader/loadingSpinner.js";
 
 const MainSection = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    
-    const itemIndex = parseInt(id) % data.length;
-    const item = data[itemIndex];
-    
-    if (!item) {
-        return <div>Товар не знайдено</div>;
+
+    const [carData, setСarData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchcarData = async () => {
+            try {
+                setLoading(true);
+                const response = await axios.get(`${API_URL}${id}/`);
+                setСarData(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setError(error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchcarData();
+    }, [id]);
+
+    if (loading) {
+        return <LoadingSpinner />;
+    }
+    if (error) {
+        return <div>Error: {error.message}</div>;
     }
 
     const handleGoBack = () => {
@@ -76,14 +63,14 @@ const MainSection = () => {
     return (
         <MainSectionContainer>
             <MainPartInfo>
-                <MainSectionImage src={item.imageSrc} alt={item.title} />
+                <MainSectionImage src={getCarImage(carData.image_url)} alt={carData.title} />
                 <MainSectionDetails>
                     <TagsContainer>
                         <Tag primary>1 characteristic</Tag>
                         <Tag>2 characteristic</Tag>
                     </TagsContainer>
-                    <MainSectionTitle>{item.title}</MainSectionTitle>
-                    <MainSectionDescription>{item.description}</MainSectionDescription>
+                    <MainSectionTitle>{carData.title}</MainSectionTitle>
+                    <MainSectionDescription>{carData.description}</MainSectionDescription>
                     <FormFieldsContainer>
                         <FieldGroup>
                             <MainSectionLabel htmlFor="color">Countable field</MainSectionLabel>
@@ -91,15 +78,15 @@ const MainSection = () => {
                         </FieldGroup>
                         <FieldGroup>
                             <MainSectionLabel htmlFor="color">Selectable Field</MainSectionLabel>
-                            <MainSectionSelect id="color" name="color" value={item.color}>
-                                <option value={item.color}>{item.color}</option>
+                            <MainSectionSelect id="color" name="color" value={carData.color}>
+                                <option value={carData.color}>{carData.color}</option>
                             </MainSectionSelect>
                         </FieldGroup>
                     </FormFieldsContainer>
                 </MainSectionDetails>                    
             </MainPartInfo>            
             <BottomSection>
-                <MainSectionPrice>Price: ${item.price}.00</MainSectionPrice>
+                <MainSectionPrice>Price: ${carData.price}.00</MainSectionPrice>
                 <ButtonsContainer>
                     <MainSectionButtonGoBack onClick={handleGoBack}>Go back</MainSectionButtonGoBack>
                     <MainSectionButtonAddToCart>Add to cart</MainSectionButtonAddToCart>

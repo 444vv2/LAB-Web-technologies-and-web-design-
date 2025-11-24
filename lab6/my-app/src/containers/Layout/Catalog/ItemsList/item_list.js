@@ -1,158 +1,98 @@
-import {React, useMemo} from "react";
+import {React, useMemo, useEffect, useState} from "react";
+import axios from "axios";
+import { API_URL } from "../../../../constants/constants.js";
 import { ItemsListWrapper, ItemsGrid} from "./item_list.styled";
 import CardItem from "../../../../components/CardItem/cardItem";
-import CarImg1 from "../../../../Icons/car1.png";
-import CarImg2 from "../../../../Icons/car2.png";
-import CarImg3 from "../../../../Icons/car3.png";
 import { useSearchParams } from "react-router-dom";
+import { getCarImage } from "../../../../utils/imageUtils.js";
+import LoadingSpinner from "../../../../components/Loader/loadingSpinner.js";
 
-const data = [
-    { 
-        id: 1,
-        title: "Green Car 1",
-        description: "This is a great green car with excellent features and performance.",
-        imageSrc: CarImg1, 
-        price: "250",
-        color: "green",
-        priceCategory: "About",
-        type: "Solo_car"
-    },
-    { 
-        id: 2,
-        title: "Red Car 2",
-        description: "This is a stunning red car that offers a smooth ride and top-notch safety.",
-        imageSrc: CarImg2, 
-        price: "100",
-        color: "red",
-        priceCategory: "About",
-        type: "Solo_car"
-    },
-    { 
-        id: 3,
-        title: "Orange Car 3",
-        description: "This is a vibrant orange car that combines style with cool performance.",
-        imageSrc: CarImg3, 
-        price: "320",
-        color: "orange",
-        priceCategory: "About",
-        type: "Set"
-    },
-    { 
-        id: 4,
-        title: "Green Car 1",
-        description: "This is a great green car with excellent features and performance.",
-        imageSrc: CarImg1, 
-        price: "250",
-        color: "green",
-        priceCategory: "About",
-        type: "Solo_car"
-    },
-    { 
-        id: 5,
-        title: "Red Car 2",
-        description: "This is a stunning red car that offers a smooth ride and top-notch safety.",
-        imageSrc: CarImg2, 
-        price: "100",
-        color: "red",
-        priceCategory: "About",
-        type: "Solo_car"
-    },
-    { 
-        id: 3,
-        title: "Orange Car 3",
-        description: "This is a vibrant orange car that combines style with cool performance.",
-        imageSrc: CarImg3, 
-        price: "320",
-        color: "orange",
-        priceCategory: "About",
-        type: "Set"
-    },
-    { 
-        id: 4,
-        title: "Green Car 1",
-        description: "This is a great green car with excellent features and performance.",
-        imageSrc: CarImg1, 
-        price: "250",
-        color: "green",
-        priceCategory: "About",
-        type: "Solo_car"
-    },
-    { 
-        id: 5,
-        title: "Red Car 2",
-        description: "This is a stunning red car that offers a smooth ride and top-notch safety.",
-        imageSrc: CarImg2, 
-        price: "100",
-        color: "red",
-        priceCategory: "About",
-        type: "Solo_car"
-    },
-    { 
-        id: 3,
-        title: "Orange Car 3",
-        description: "This is a vibrant orange car that combines style with cool performance.",
-        imageSrc: CarImg3, 
-        price: "320",
-        color: "orange",
-        priceCategory: "About",
-        type: "Set"
-    },
-    { 
-        id: 4,
-        title: "Green Car 1",
-        description: "This is a great green car with excellent features and performance.",
-        imageSrc: CarImg1, 
-        price: "70",
-        color: "green",
-        priceCategory: "Less",
-        type: "Solo_car"
-    }
-];
 
 const ItemsList = () => {
-        const [searchParams] = useSearchParams();
-        const q = (searchParams.get("q") || "").trim().toLowerCase();
-        const filter1 = searchParams.get("filter1") || "";
-        const filter2 = searchParams.get("filter2") || "";
-        const filter3 = searchParams.get("filter3") || "";
+    const [carsData, setCarsData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const [searchParams] = useSearchParams();
     
-        const filtered = useMemo(() => {
-            let result = data;
-            
-            if (q) {
-                result = result.filter(item =>
-                    (item.title || "")
-                        .toLowerCase()
-                        .split(/\s+/)
-                        .some(word => word.startsWith(q))
-                );
-            }
-            
-            if (filter1) {
-                result = result.filter(item => item.color === filter1);
-            }
+    const q = (searchParams.get("q") || "").trim().toLowerCase();
+    const filter1 = searchParams.get("filter1") || "";
+    const filter2 = searchParams.get("filter2") || "";
+    const filter3 = searchParams.get("filter3") || "";
 
-            if (filter2) {
-                result = result.filter(item => item.priceCategory === filter2);
+    useEffect(() => {
+        const fetchCarsData = async () => {
+            try {
+                setLoading(true);
+                const response = await axios.get(API_URL);
+                console.log("Fetched cars data:", response.data);
+                setCarsData(response.data);
+            } catch (error) {
+                setError(error);
+            } finally {
+                setLoading(false);
             }
+        };
 
-            if (filter3) {
-                result = result.filter(item => item.type === filter3);
-            }
+        fetchCarsData();
+    }, []);
+
+    const filtered = useMemo(() => {
+        let result = carsData;
             
-            return result;
-        }, [q, filter1, filter2, filter3]);
+        if (q) {
+            result = result.filter(item =>
+                (item.title || "")
+                    .toLowerCase()
+                    .split(/\s+/)
+                    .some(word => word.startsWith(q))
+            );
+        }
+            
+        if (filter1) {
+            result = result.filter(item => item.color === filter1);
+        }
+
+        if (filter2) {
+            if (filter2 === "About") {
+                result = result.filter(item => item.price > 100 && item.price <= 1000);
+            } else if (filter2 === "Less") {
+                result = result.filter(item => item.price <= 100);
+            }
+        }
+
+        if (filter3) {
+            result = result.filter(item => item.category === filter3);
+        }
+ 
+        return result;
+    }, [carsData, q, filter1, filter2, filter3]);
+
+    if (loading) {
+        return <LoadingSpinner />;
+    }
+
+    if (error) {
+        return (
+            <ItemsListWrapper>
+                <ItemsGrid>
+                    <div>Error loading items: {error.message}</div>
+                </ItemsGrid>
+            </ItemsListWrapper>
+        );
+    }
 
     return (
         <ItemsListWrapper>
             <ItemsGrid>
-                {filtered.map((item, id) => (
+                {filtered.map((item) => (
                         <CardItem
-                            key={item.id}
+                            key={item.car_id}
+                            id={item.car_id}
                             title={item.title}
                             description={item.description}
-                            imageSrc={item.imageSrc}
-                            price={item.price}
+                            imageSrc={getCarImage(item.image_url)}
+                            price={`${item.price}`}
                         />
                     ))}
                 </ItemsGrid>

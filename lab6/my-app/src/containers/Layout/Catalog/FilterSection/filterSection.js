@@ -60,6 +60,13 @@ const FilterSection = () => {
                     <option value="green">Green</option>
                     <option value="red">Red</option>
                     <option value="orange">Orange</option>
+                    <option value="blue">Blue</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="silver">Silver</option>
+                    <option value="pink">Pink</option>
+                    <option value="purple">Purple</option>
                 </FilterSelect>
                 <FilterLabel htmlFor="filter2"></FilterLabel>
                 <FilterSelect 

@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CardContainer, CardImage, CardTitle, CardFooter, CardPrice, CardButton} from "./cardItem.styled";
 
-const CardItem = ({ title, description, imageSrc, price, index }) => {
+const CardItem = ({ id, title, description, imageSrc, price }) => {
     const navigate = useNavigate();
 
     const handleViewMore = () => {
-        navigate(`/catalog/${index}`);
+        navigate(`/catalog/${id}`);
     };
 
     return (
