@@ -1,5 +1,5 @@
-from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
+from typing import List, Optional
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from db.base import get_db
@@ -9,12 +9,17 @@ from crud import car_stock_crud
 router = APIRouter(prefix="/api/cars", tags=["cars"])
 
 @router.get("/", response_model=List[CarStockResponse])
-async def get_cars(db: AsyncSession = Depends(get_db)):
+async def get_cars(
+    db: AsyncSession = Depends(get_db),
+    color: Optional[str] = Query(None, description="Filter by color"),
+    price_range: Optional[str] = Query(None, description="Filter by price range: low, medium, high"),
+    category: Optional[str] = Query(None, description="Filter by category")
+):
     """
-    Отримати каталог машинок
+    Отримати каталог машинок з опціональними фільтрами
     """
     try:
-        cars = await car_stock_crud.get_all_cars(db)
+        cars = await car_stock_crud.get_filtered_cars(db, color, price_range, category)
         return cars
     except Exception as e:
         raise HTTPException(

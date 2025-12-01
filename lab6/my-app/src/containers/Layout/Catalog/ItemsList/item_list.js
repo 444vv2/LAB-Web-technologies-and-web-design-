@@ -16,26 +16,52 @@ const ItemsList = () => {
     const [searchParams] = useSearchParams();
     
     const q = (searchParams.get("q") || "").trim().toLowerCase();
-    const filter1 = searchParams.get("filter1") || "";
-    const filter2 = searchParams.get("filter2") || "";
-    const filter3 = searchParams.get("filter3") || "";
+    
+    const color = searchParams.get("color") || "";
+    const priceRange = searchParams.get("priceRange") || "";
+    const category = searchParams.get("category") || "";
+    
+    const hasBackendFilters = color || priceRange || category;
 
     useEffect(() => {
-        const fetchCarsData = async () => {
-            try {
-                setLoading(true);
-                const response = await axios.get(API_URL);
-                console.log("Fetched cars data:", response.data);
-                setCarsData(response.data);
-            } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
+        if (!hasBackendFilters) {
+            const fetchCarsData = async () => {
+                try {
+                    setLoading(true);
+                    const response = await axios.get(API_URL);
+                    console.log("Fetched all cars data:", response.data);
+                    setCarsData(response.data);
+                } catch (error) {
+                    setError(error);
+                } finally {
+                    setLoading(false);
+                }
+            };
 
-        fetchCarsData();
-    }, []);
+            fetchCarsData();
+        } else {
+            const fetchFilteredData = async () => {
+                try {
+                    setLoading(true);
+                    const queryParams = new URLSearchParams();
+                    
+                    if (color) queryParams.append('color', color);
+                    if (priceRange) queryParams.append('price_range', priceRange);
+                    if (category) queryParams.append('category', category);
+                    
+                    const response = await axios.get(`${API_URL}?${queryParams.toString()}`);
+                    console.log("Fetched filtered cars data:", response.data);
+                    setCarsData(response.data);
+                } catch (error) {
+                    setError(error);
+                } finally {
+                    setLoading(false);
+                }
+            };
+
+            fetchFilteredData();
+        }
+    }, [hasBackendFilters, color, priceRange, category]);
 
     const filtered = useMemo(() => {
         let result = carsData;
@@ -48,25 +74,9 @@ const ItemsList = () => {
                     .some(word => word.startsWith(q))
             );
         }
-            
-        if (filter1) {
-            result = result.filter(item => item.color === filter1);
-        }
-
-        if (filter2) {
-            if (filter2 === "About") {
-                result = result.filter(item => item.price > 100 && item.price <= 1000);
-            } else if (filter2 === "Less") {
-                result = result.filter(item => item.price <= 100);
-            }
-        }
-
-        if (filter3) {
-            result = result.filter(item => item.category === filter3);
-        }
  
         return result;
-    }, [carsData, q, filter1, filter2, filter3]);
+    }, [carsData, q]);
 
     if (loading) {
         return <LoadingSpinner />;

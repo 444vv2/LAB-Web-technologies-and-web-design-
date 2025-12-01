@@ -18,6 +18,33 @@ class CarStockCRUD:
         result = await db.execute(query)
         return result.scalars().all()
 
+    async def get_filtered_cars(
+        self,
+        db: AsyncSession,
+        color: Optional[str] = None,
+        price_range: Optional[str] = None,
+        category: Optional[str] = None
+    ) -> List[CarStock]:
+
+        query = select(self.model)
+
+        if color and color.lower() != "all":
+            query = query.where(self.model.color.ilike(f"%{color}%"))
+
+        if price_range and price_range.lower() != "all":
+            if price_range.lower() == "low":
+                query = query.where(self.model.price <= 100)
+            elif price_range.lower() == "medium":
+                query = query.where(self.model.price.between(100, 400))
+            elif price_range.lower() == "high":
+                query = query.where(self.model.price >= 400)
+
+        if category and category.lower() != "all":
+            query = query.where(self.model.category.ilike(f"%{category}%"))
+
+        result = await db.execute(query)
+        return result.scalars().all()
+
     async def get_by_id(self, db: AsyncSession, car_id: int) -> Optional[CarStock]:
         """Отримати товар по ID"""
         query = select(self.model).where(self.model.car_id == car_id)

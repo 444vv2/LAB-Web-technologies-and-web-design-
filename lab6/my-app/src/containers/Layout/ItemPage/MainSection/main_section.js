@@ -24,11 +24,15 @@ import {
 } from "./main_section.styled";
 import { getCarImage } from "../../../../utils/imageUtils.js";
 import LoadingSpinner from "../../../../components/Loader/loadingSpinner.js";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../../../store/cartSlice.js";
 
 const MainSection = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
+    const [quantity, setQuantity] = useState(1);
     const [carData, setСarData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -60,6 +64,17 @@ const MainSection = () => {
         navigate('/catalog');
     };
 
+    const handleAddToCart = () => {
+        dispatch(addItemToCart({
+            id: carData.car_id,
+            title: carData.title,
+            price: carData.price,
+            image_url: carData.image_url,
+            quantity: parseInt(quantity)
+        }));
+        navigate('/cart');
+    };
+
     return (
         <MainSectionContainer>
             <MainPartInfo>
@@ -74,7 +89,13 @@ const MainSection = () => {
                     <FormFieldsContainer>
                         <FieldGroup>
                             <MainSectionLabel htmlFor="color">Countable field</MainSectionLabel>
-                            <MainSectionInput type="number" id="quantity" name="quantity" min="1" defaultValue="1" />
+                            <MainSectionInput 
+                            type="number" 
+                            id="quantity" 
+                            name="quantity" 
+                            value={quantity} 
+                            onChange={(e) => setQuantity(e.target.value)}
+                            />
                         </FieldGroup>
                         <FieldGroup>
                             <MainSectionLabel htmlFor="color">Selectable Field</MainSectionLabel>
@@ -89,7 +110,7 @@ const MainSection = () => {
                 <MainSectionPrice>Price: ${carData.price}.00</MainSectionPrice>
                 <ButtonsContainer>
                     <MainSectionButtonGoBack onClick={handleGoBack}>Go back</MainSectionButtonGoBack>
-                    <MainSectionButtonAddToCart>Add to cart</MainSectionButtonAddToCart>
+                    <MainSectionButtonAddToCart onClick={handleAddToCart}>Add to cart</MainSectionButtonAddToCart>
                 </ButtonsContainer>
             </BottomSection>
         </MainSectionContainer>
