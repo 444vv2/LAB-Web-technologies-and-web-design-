@@ -84,7 +84,7 @@ const MainSection = () => {
                 <GoBackButton onClick={() => window.history.back()}>
                     Back to Catalog
                 </GoBackButton>
-                <ContinueButton onClick={() => navigate('/cart/checkout')}>
+                <ContinueButton onClick={() => navigate('/checkout')}>
                     Continue
                 </ContinueButton>
             </ButtonsContainer>

@@ -93,3 +93,27 @@ export const HeaderSearch = styled.div`
         }
     }
 `;
+
+export const HeaderAuthorization = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 20px;
+`;
+export const AuthButton = styled.button`
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    border: 2px solid #ff6b35;
+    color: #ff6b35;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+
+    &:hover {
+        background: #ff6b35;
+        color: #000000;
+        border: 2px solid #000000;
+        transition: all 0.5s ease;
+    }
+`;

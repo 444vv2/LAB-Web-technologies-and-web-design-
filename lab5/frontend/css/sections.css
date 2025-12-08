@@ -58,9 +58,10 @@
 }
 
 .item_list{
-    display: flex;
+    /* display: flex; */
+    display: grid;
     margin: 20px;
-    flex-direction: column;
+    grid-template-columns: repeat(3, 1fr);
     list-style: none;
     max-width: 300px;
     height: auto;
@@ -68,8 +69,14 @@
     color: #23395d;
 }
 
+.item_list > .item_list_image {
+    width: 260px;
+    height: auto;
+}
+
 .item_list > li {
-    margin-bottom: 30px;
+    margin: 40px;
+    width: 350px;
 }
 
 .count_div {

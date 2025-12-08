@@ -26,5 +26,4 @@ class CarAddModel(BaseModel):
 
 class CarModel(CarAddModel):
     id: int
-    # Allow Pydantic v2 to read attributes from ORM objects (SQLAlchemy)
     model_config = ConfigDict(from_attributes=True)

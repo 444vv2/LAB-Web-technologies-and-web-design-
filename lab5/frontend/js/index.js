@@ -16,8 +16,6 @@ let currentEditId = null;
 const API_URL = "http://127.0.0.1:8001/api/cars";
 let cars = [];
 
-// const generateId = () => Date.now().toString();
-
 const fetchCars = async () => {
     const res = await fetch(API_URL);
     if (!res.ok) throw new Error("Failed to load cars");
@@ -26,7 +24,10 @@ const fetchCars = async () => {
 };
 
 const addItem  = async ({brand, max_speed, engine_power}) => {
-    const payload = { brand, max_speed: Number(max_speed), engine_power: Number(engine_power) };
+    const payload = { brand, 
+                    max_speed: Number(max_speed), 
+                    engine_power: Number(engine_power) 
+                };
     const res = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -149,9 +150,7 @@ cancelButton.addEventListener("click", () => {
     currentEditId = null;
 });
 
-// initial load from backend
 fetchCars().catch(() => {
-    // If backend is down, keep empty list and allow local interactions (no persistence)
     cars = [];
     renderItemList(cars);
 });
