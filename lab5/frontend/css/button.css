@@ -1,0 +1,161 @@
+.submit_button{ 
+    margin: 10px 10px 10px 0;
+    padding: 7px;
+    max-width: 150px;
+    background: rgb(247, 247, 46);
+    color: #23395d;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(35,57,93,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.submit_button:hover {
+    background: #406e8e;
+    color: #e0eafc;
+}
+
+.find_button {
+    margin: 10px 10px 10px 0;
+    padding: 7px;
+    max-width: 100%;
+    background: rgb(247, 247, 46);
+    color: #23395d;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(35,57,93,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.find_button:hover {
+    background: #406e8e;
+    color: #e0eafc;
+}
+
+
+.reset_button {
+    margin: 10px 10px 10px 0;
+    padding: 7px;
+    max-width: 100%;
+    background: #23395d;
+    color: #e0eafc;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(35,57,93,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.reset_button:hover {
+    background: #e0eafc;
+    color: #23395d;
+}
+
+
+.find_button, .reset_button {
+    text-align: center;
+    flex: 1;
+}
+
+.search_buttons{
+    display: flex;
+    gap: 7px;
+}
+
+.sort_by_speed_button, .sort_by_engine_power_button, .count_button {
+    padding: 7px;
+    width: 140px;
+    background: rgb(247, 247, 46);
+    color: #23395d;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(35,57,93,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.sort_by_speed_button:hover, .sort_by_engine_power_button:hover, .count_button:hover {
+    background: #406e8e;
+    color: #e0eafc;
+}
+
+.edit_button {
+    margin: 10px 10px 10px 0;
+    padding: 7px;
+    width: 100px;
+    background: rgb(39, 80, 230);
+    color: #f5f6f8;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(35,57,93,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.edit_button:hover {
+    background: #ededed;
+    color: rgb(39, 80, 230);
+    border: 2px solid rgb(39, 80, 230);
+}    
+
+.delete_button {
+    margin: 10px 10px 10px 0;
+    padding: 7px;
+    width: 100px;
+    background: #e00e0e;
+    color: #e0eafc;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(35,57,93,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.delete_button:hover {
+    background: #fefefe;
+    color: #e30707;
+    border: 2px solid #e30707;
+}
+
+.aprove_button {
+    margin: 10px 10px 10px 0;
+    padding: 7px;
+    width: 80px;
+    background: rgb(39, 230, 80);
+    color: #f5f6f8;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(35,57,93,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.aprove_button:hover {
+    background: #ededed;
+    color: rgb(39, 230, 80);
+    border: 2px solid rgb(39, 230, 80);
+}
+
+.cancel_button {
+    margin: 10px 10px 10px 0;
+    padding: 7px;
+    width: 80px;
+    background: #23395d;
+    color: #e0eafc;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(35,57,93,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+

@@ -1,0 +1,31 @@
+{
+  "name": "lab-web-technologies-and-web-design-",
+  "version": "1.0.0",
+  "description": "Repository for laboratory works on Web Technologies and Web Design.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/444vv2/LAB-Web-technologies-and-web-design-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/444vv2/LAB-Web-technologies-and-web-design-/issues"
+  },
+  "homepage": "https://github.com/444vv2/LAB-Web-technologies-and-web-design-#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3"
+  }
+}
